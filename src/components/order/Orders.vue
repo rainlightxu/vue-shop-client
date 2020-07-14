@@ -115,8 +115,8 @@
           <el-input v-model="statusForm.order_number"></el-input>
         </el-form-item>
         <el-form-item label="订单状态">
-          <el-radio v-model="statusForm.pay_status" :label="'0'">未支付</el-radio>
-          <el-radio v-model="statusForm.pay_status" :label="'1'">已付款</el-radio>
+          <el-radio v-model="statusForm.pay_status" label="0" @change="payStatusChanged">未支付</el-radio>
+          <el-radio v-model="statusForm.pay_status" label="1" @change="payStatusChanged">已付款</el-radio>
         </el-form-item>
         <el-form-item label="支付方式">
           <el-radio v-model="statusForm.order_pay" label="0">未支付</el-radio>
@@ -187,16 +187,31 @@ export default {
     this.getOrdersList()
   },
   methods: {
-    async getOrdersList() {
-      const { data: res } = await this.$http.get('orders', {
+    // async getOrdersList() {
+    //   const { data: res } = await this.$http.get('orders', {
+    //     params: this.queryInfo
+    //   })
+    //   if (res.meta.status !== 200) {
+    //     return this.$message.error('获取订单列表失败')
+    //   }
+    //   this.$message.success('获取订单列表成功')
+    //   this.ordersList = res.data.goods
+    //   this.total = res.data.total
+    // },
+    getOrdersList() {
+      this.$http.get('ordeasdfdadfrsa', {
         params: this.queryInfo
+      }).then(res=>{
+        console.log(res)
+      }).catch(err=>{
+        console.log(err)
       })
-      if (res.meta.status !== 200) {
-        return this.$message.error('获取订单列表失败')
-      }
-      this.$message.success('获取订单列表成功')
-      this.ordersList = res.data.goods
-      this.total = res.data.total
+      // if (res.meta.status !== 200) {
+      //   return this.$message.error('获取订单列表失败')
+      // }
+      // this.$message.success('获取订单列表成功')
+      // this.ordersList = res.data.goods
+      // this.total = res.data.total
     },
     handleSizeChange(newSize) {
       this.queryInfo.pagesize = newSize
@@ -243,6 +258,9 @@ export default {
       this.$message.success('更改订单状态成功')
       this.editlocationDialogVisible = false
       this.getOrdersList()
+    },
+    payStatusChanged(select){
+      this.statusForm.pay_status = select
     }
   }
 }

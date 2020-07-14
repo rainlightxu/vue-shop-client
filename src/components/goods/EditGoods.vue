@@ -25,8 +25,8 @@
         <el-input v-model="editForm.goods_weight"></el-input>
       </el-form-item>
       <el-form-item label="商品介绍" prop="goods_introduce" label-width="100px">
-        <el-input v-model="editForm.goods_introduce"></el-input>
-        <!-- <quill-editor v-model="editForm.goods_introduce" ></quill-editor> -->
+        <!-- <el-input v-model="editForm.goods_introduce"></el-input> -->
+        <quill-editor v-model="editForm.goods_introduce" ></quill-editor>
       </el-form-item>
       <el-button type="primary" @click="submitEditGoods" size="medium">提交</el-button>
       <!-- <el-form-item label="商品状态" prop="goods_state" label-width="100px">

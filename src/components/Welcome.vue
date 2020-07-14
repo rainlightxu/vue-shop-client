@@ -7,8 +7,8 @@
       </el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 轮播图 -->
-    <el-carousel :interval="4000" type="card" height="200px">
-      <el-carousel-item v-for="item in urls" :key="item">
+    <el-carousel :interval="4000" type="card" height="300px">
+      <el-carousel-item v-for="item in urls" :key="item" class="item">
         <img :src="item" />
       </el-carousel-item>
     </el-carousel>
@@ -34,7 +34,12 @@ export default {
 <style lang="less" scoped>
 img {
   height: 100%;
-  margin-left: 131px;
+  // margin: 0 auto;
+  // margin-left: 131px;
+}
+.item{
+  display: flex;
+  justify-content: center;
 }
 .el-carousel__item h3 {
   color: #475669;
@@ -46,7 +51,6 @@ img {
 
 .el-carousel__item:nth-child(2n) {
   background-color: #eaedf1;
-
 }
 
 .el-carousel__item:nth-child(2n + 1) {
